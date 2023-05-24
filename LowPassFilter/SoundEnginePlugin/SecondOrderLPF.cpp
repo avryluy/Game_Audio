@@ -76,7 +76,9 @@ void SecondOrderLPF::calcCoeffs()
 
 void SecondOrderLPF::Execute(AkReal32* io_pBuffer, AkUInt16 in_uValidFrames)
 {
-	AkReal64 a0 = 1.0f, a1 = a2 = b1 = b2 = 0.0f, Q = 0.707f;
+	AkReal64 a0 = 1.0f, 
+	a1 = a2 = b1 = b2 = 0.0f,
+	Q = 0.707f;
 		
 	if (m_frequencyChanged)
 	{

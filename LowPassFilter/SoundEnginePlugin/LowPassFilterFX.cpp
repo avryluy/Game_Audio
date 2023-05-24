@@ -57,6 +57,12 @@ AKRESULT LowPassFilterFX::Init(AK::IAkPluginMemAlloc* in_pAllocator, AK::IAkEffe
     m_pParams = (LowPassFilterFXParams*)in_pParams;
     m_pAllocator = in_pAllocator;
     m_pContext = in_pContext;
+    so_lpf.resize(in_rFormat.GetNumChannels());
+
+    for (auto& filterChannel : so_lpf)
+    {
+        filterChannel.Setup(in_rFormat.uSampleRate);
+    }
 
     return AK_Success;
 }
@@ -83,6 +89,14 @@ AKRESULT LowPassFilterFX::GetPluginInfo(AkPluginInfo& out_rPluginInfo)
 
 void LowPassFilterFX::Execute(AkAudioBuffer* io_pBuffer)
 {
+
+    if (m_pParams->m_paramChangeHandler.HasChanged(PARAM_FREQUENCY_ID))
+    {
+        for (auto& filterChannel : so_lpf) 
+            {
+            filterChannel.SetFrequency(m_pParams->RTPC.fFrequency);
+            }
+    }
     const AkUInt32 uNumChannels = io_pBuffer->NumChannels();
 
     AkUInt16 uFramesProcessed;
@@ -90,12 +104,8 @@ void LowPassFilterFX::Execute(AkAudioBuffer* io_pBuffer)
     {
         AkReal32* AK_RESTRICT pBuf = (AkReal32* AK_RESTRICT)io_pBuffer->GetChannel(i);
 
-        uFramesProcessed = 0;
-        while (uFramesProcessed < io_pBuffer->uValidFrames)
-        {
-            // Execute DSP in-place here
-            ++uFramesProcessed;
-        }
+        so_lpf[i].Execute(pBuf, io_pBuffer->uValidFrames);
+        
     }
 }
 

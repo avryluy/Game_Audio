@@ -72,7 +72,7 @@ Plugin.sdk.shared.files =
 {
     "LowPassFilterFXShared.cpp",
     "LowPassFilterFXFactory.h",
-
+}
 Plugin.sdk.shared.excludes =
 {
 }

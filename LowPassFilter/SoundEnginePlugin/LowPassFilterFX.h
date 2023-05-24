@@ -28,6 +28,8 @@ the specific language governing permissions and limitations under the License.
 #define LowPassFilterFX_H
 
 #include "LowPassFilterFXParams.h"
+#include "SecondOrderLPF.h"
+#include <vector>
 
 /// See https://www.audiokinetic.com/library/edge/?source=SDK&id=soundengine__plugins__effects.html
 /// for the documentation about effect plug-ins
@@ -65,6 +67,7 @@ private:
     LowPassFilterFXParams* m_pParams;
     AK::IAkPluginMemAlloc* m_pAllocator;
     AK::IAkEffectPluginContext* m_pContext;
+    std::vector<SecondOrderLPF> so_lpf;
 };
 
 #endif // LowPassFilterFX_H

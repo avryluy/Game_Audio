@@ -54,6 +54,19 @@ for the documentation about the plugin xml format
           </ValueRestriction>
         </Restrictions>
       </Property>
+		<Property Name="Gain" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Output Gain" DataMeaning="Decibels">
+			<UserInterface Step="0.1" Fine="0.001" Decimals="3" UIMax="12" SliderType="6"/>
+			<DefaultValue>0.0</DefaultValue>
+			<AudioEnginePropertyID>1</AudioEnginePropertyID>
+			<Restrictions>
+				<ValueRestriction>
+					<Range Type="Real32">
+						<Min>-96.0</Min>
+						<Max>12.0</Max>
+					</Range>
+				</ValueRestriction>
+			</Restrictions>
+		</Property>
     </Properties>
   </EffectPlugin>
 </PluginModule>

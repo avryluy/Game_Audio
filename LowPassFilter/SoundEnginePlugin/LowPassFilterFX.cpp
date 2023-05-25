@@ -105,7 +105,7 @@ void LowPassFilterFX::Execute(AkAudioBuffer* io_pBuffer)
         AkReal32* AK_RESTRICT pBuf = (AkReal32* AK_RESTRICT)io_pBuffer->GetChannel(i);
 
         so_lpf[i].Execute(pBuf, io_pBuffer->uValidFrames);
-        
+        //pBuf[uFramesProcessed] = 
     }
 }
 

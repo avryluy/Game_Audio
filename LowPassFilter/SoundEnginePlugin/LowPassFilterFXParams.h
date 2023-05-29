@@ -36,6 +36,7 @@ static const AkPluginParamID PARAM_FREQUENCY_ID = 0;
 static const AkPluginParamID PARAM_GAIN_ID = 1;
 static const AkUInt32 NUM_PARAMS = 2;
 
+
 struct LowPassFilterRTPCParams
 {
     AkReal32 fFrequency;

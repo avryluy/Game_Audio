@@ -54,9 +54,9 @@ for the documentation about the plugin xml format
           </ValueRestriction>
         </Restrictions>
       </Property>
-		<Property Name="Gain" Type="Real32" SupportRTPCType="Exclusive" DisplayName="Output Gain" DataMeaning="Decibels">
+		<Property Name="Gain" Type="Real32" SupportRTPCType="Additive" DisplayName="Output Gain" DataMeaning="Decibels">
 			<UserInterface Step="0.1" Fine="0.001" Decimals="3" UIMax="12" SliderType="6"/>
-			<DefaultValue>0.0</DefaultValue>
+			<DefaultValue>0</DefaultValue>
 			<AudioEnginePropertyID>1</AudioEnginePropertyID>
 			<Restrictions>
 				<ValueRestriction>

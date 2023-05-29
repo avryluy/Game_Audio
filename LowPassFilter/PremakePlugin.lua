@@ -48,6 +48,7 @@ Plugin.sdk.static.files = -- https://github.com/premake/premake-core/wiki/files
     "**.c",
     "SecondOrderLPF.cpp",
     "SecondOrderLPF.h",
+
 }
 Plugin.sdk.static.excludes = -- https://github.com/premake/premake-core/wiki/removefiles
 {

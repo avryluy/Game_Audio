@@ -39,6 +39,7 @@ bool LowPassFilterPlugin::GetBankParameters(const GUID & in_guidPlatform, AK::Ww
 {
     // Write bank data here
     in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Frequency"));
+    in_dataWriter.WriteReal32(m_propertySet.GetReal32(in_guidPlatform, "Gain"));
 
     return true;
 }

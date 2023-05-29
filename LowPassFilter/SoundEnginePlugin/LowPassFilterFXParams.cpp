@@ -54,7 +54,7 @@ AKRESULT LowPassFilterFXParams::Init(AK::IAkPluginMemAlloc* in_pAllocator, const
     {
         // Initialize default parameters here
         RTPC.fFrequency = 1000.0f;
-        RTPC.fGain = 0.0f;
+        RTPC.fGain = powf(10.f, 0.f * 0.05f);
         m_paramChangeHandler.SetAllParamChanges();
         return AK_Success;
     }
@@ -75,7 +75,7 @@ AKRESULT LowPassFilterFXParams::SetParamsBlock(const void* in_pParamsBlock, AkUI
 
     // Read bank data here
     RTPC.fFrequency = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
-    RTPC.fGain = READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize);
+    RTPC.fGain = AK_DBTOLIN( READBANKDATA(AkReal32, pParamsBlock, in_ulBlockSize));
     CHECKBANKDATASIZE(in_ulBlockSize, eResult);
     m_paramChangeHandler.SetAllParamChanges();
 

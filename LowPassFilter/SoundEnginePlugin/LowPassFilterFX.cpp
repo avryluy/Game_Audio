@@ -105,8 +105,17 @@ void LowPassFilterFX::Execute(AkAudioBuffer* io_pBuffer)
         AkReal32* AK_RESTRICT pBuf = (AkReal32* AK_RESTRICT)io_pBuffer->GetChannel(i);
 
         so_lpf[i].Execute(pBuf, io_pBuffer->uValidFrames);
-        //pBuf[uFramesProcessed] = 
-    }
+        
+        uFramesProcessed = 0;
+
+        while (uFramesProcessed < io_pBuffer->uValidFrames)
+        {
+            pBuf[uFramesProcessed] = pBuf[uFramesProcessed] * AK_DBTOLIN(m_pParams->RTPC.fGain);
+            ++uFramesProcessed;
+        }
+
+        }
+
 }
 
 AKRESULT LowPassFilterFX::TimeSkip(AkUInt32 in_uFrames)
